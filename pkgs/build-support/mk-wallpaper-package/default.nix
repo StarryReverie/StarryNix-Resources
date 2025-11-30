@@ -65,6 +65,12 @@ stdenvNoCC.mkDerivation (
 
         runHook postInstall
       '';
+
+      passthru = {
+        wallpaperDir = "${builtins.placeholder "out"}/share/backgrounds/${pname}";
+        gnomeFileDir = "${builtins.placeholder "out"}/share/backgrounds/${pname}";
+        kdeFileDir = "${builtins.placeholder "out"}/share/wallpapers/${pname}/contents/images";
+      };
     }
     // (builtins.removeAttrs args [ "displayName" ])
   )
