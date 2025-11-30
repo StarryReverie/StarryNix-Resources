@@ -33,7 +33,7 @@
 
           formatter = pkgs.nixfmt-tree;
 
-          legacyPackages = { };
+          legacyPackages = import ./pkgs { inherit pkgs; };
 
           packages = inputs.nixpkgs.lib.filterAttrs (
             _: value: inputs.nixpkgs.lib.isDerivation value
