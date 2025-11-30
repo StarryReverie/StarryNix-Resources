@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=@@display-name@@
+Type=Service
+X-KDE-ServiceTypes=KPackage/Generic
+X-KDE-PluginInfo-Name=@@package-name@@
+X-KDE-PluginInfo-Author=Unknown
+X-KDE-PluginInfo-License=@@license-spdx-id@@
