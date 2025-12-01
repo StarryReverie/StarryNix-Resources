@@ -32,8 +32,36 @@ Assuming that all flake inputs are passed to the NixOS configuration as a specia
     wallpaperPackages.digital-art
     # Add other packages from StarryNix-Resources here ...
   ]);
+
+  environment.pathsToLink = [
+    # For wallpaper packages
+    "/share/backgrounds" # GNOME
+    "/share/wallpapers" # KDE Plasma
+  ];
 }
 ```
+
+## Passthrough Output
+
+Packages from StarryNix-Resources typically provides passthrough output, which means that installing packages to the whole system environment is not necessary, instead, it's possible to refer ot them using the attrset keys. This keeps your system profile clean and avoids your configuration depending on weak-typed path strings.
+
+### Wallpapers
+
+All wallpapers provides these passthrough outputs:
+
+```nix
+{
+  passthru = {
+    wallpaperDir = "${final}/share/backgrounds/${pname}";
+    gnomeFileDir = "${final}/share/backgrounds/${pname}";
+    kdeFileDir = "${final}/share/wallpapers/${pname}/contents/images";
+  };
+}
+```
+
+The wallpaper directory, for example, is retrieved from `wallpaperPackages.digital-art.wallpaperDir`.
+
+Note that the actual definition of those passthrough values may be subjected to change. There is no guarantee for its stability.
 
 ## License
 
