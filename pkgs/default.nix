@@ -13,5 +13,9 @@ in
     digital-art = callPackage ./by-name/wallpaper-packages/digital-art/package.nix {
       inherit (buildSupport) mkWallpaperPackage;
     };
+
+    landscape-illustration = callPackage ./by-name/wallpaper-packages/landscape-illustration/package.nix {
+      inherit (buildSupport) mkWallpaperPackage;
+    };
   };
 }
