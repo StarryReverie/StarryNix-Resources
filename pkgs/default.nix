@@ -1,5 +1,5 @@
 {
-  pkgs ? import <nixpkgs> { },
+  pkgs ? import ((import ../.).inputs.nixpkgs) { },
   lib ? pkgs.lib,
 }:
 let
