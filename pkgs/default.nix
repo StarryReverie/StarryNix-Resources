@@ -1,23 +1,20 @@
 {
   pkgs ? import <nixpkgs> { },
   lib ? pkgs.lib,
-  callPackage ? pkgs.callPackage,
 }:
 let
+  callPackage = lib.customisation.callPackageWith (
+    lib.attrsets.mergeAttrsList [
+      pkgs
+      buildSupport
+      exportedPackages
+    ]
+  );
+
   buildSupport = {
     mkWallpaperPackage = callPackage ./build-support/mk-wallpaper-package { };
   };
-in
-{
-  wallpaperPackages = {
-    digital-art = callPackage ./by-name/wallpaper-packages/digital-art/package.nix {
-      inherit (buildSupport) mkWallpaperPackage;
-    };
 
-    landscape-illustration =
-      callPackage ./by-name/wallpaper-packages/landscape-illustration/package.nix
-        {
-          inherit (buildSupport) mkWallpaperPackage;
-        };
-  };
-}
+  exportedPackages = import ./by-name/package-set.nix callPackage;
+in
+exportedPackages
