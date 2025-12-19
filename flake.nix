@@ -32,7 +32,7 @@
           devShells.default = pkgs.mkShellNoCC {
             packages = with pkgs; [
               nil
-              nixfmt-rfc-style
+              nixfmt
             ];
           };
 
