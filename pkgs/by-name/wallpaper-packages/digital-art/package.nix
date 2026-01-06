@@ -6,7 +6,7 @@
 let
   pname = "starrynix-resouces-wallpapers-digital-art";
   displayName = "StarryNix-Resources Digital Art Wallpapers";
-  version = "0-unstable-2025-11-30";
+  version = "0-unstable-2025-01-06";
 in
 mkWallpaperPackage {
   inherit pname displayName version;
